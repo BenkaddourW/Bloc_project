@@ -7,5 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
-    use HasFactory;
+    protected $fillable = [
+        'image',
+        'title',
+        'content',
+        'category',
+        'created_by',
+    ];
+
+    public function categoryData()
+    {
+        return $this->belongsTo(Category::class, 'category');
+    }   
 }

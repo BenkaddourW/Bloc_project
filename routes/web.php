@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\categoriesController;
+use App\Http\Controllers\postsController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,3 +21,13 @@ Route::get('/', function () {
 Route::get('/admin', function () {
     return view('admin.categories');
 });
+
+Route::post('/create_category', [categoriesController::class, 'create']);
+Route::get('/del_category/{id}', [categoriesController::class, 'delete_category']);
+
+Route::get('/admin/posts', function () {
+    return view('admin.posts');
+});
+
+Route::post('/create_posts', [postsController::class, 'create_posts']);
+Route::get('/del_posts/{id}', [postsController::class, 'delete_posts']);  
